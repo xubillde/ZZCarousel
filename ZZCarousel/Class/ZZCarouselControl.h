@@ -35,8 +35,8 @@
  */
 @property (nonatomic, assign) CGFloat carouseScrollTimeInterval;
 
-@property (nonatomic, strong) id <ZZCarouselDataSource> dataSource;
-@property (nonatomic, strong) id <ZZCarouselDelegate> delegate;
+@property (nonatomic, weak) id <ZZCarouselDataSource> dataSource;
+@property (nonatomic, weak) id <ZZCarouselDelegate> delegate;
 
 /*
  *   重载数据

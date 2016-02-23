@@ -35,16 +35,13 @@
     _array = [NSMutableArray array];
     
     NSDictionary *param = @{
-                            @"keyword":@"佐助",
-                            @"num":@"4",
-                            @"page":@"0"
+                            @"num":@"7",
                             };
     
     
-    [NetRequest GETRequest:@"http://apis.baidu.com/3023/image/search" WithParams:param WithSuccess:^(id responseObject){
-    
-        
-        NSArray *array = [responseObject objectForKey:@"image"];
+    [NetRequest GETRequest:@"http://apis.baidu.com/txapi/mvtp/meinv" WithParams:param WithSuccess:^(id responseObject){
+
+        NSArray *array = [responseObject objectForKey:@"newslist"];
         NSLog(@"%@",array);
     
         [_array addObjectsFromArray:array];
@@ -82,7 +79,7 @@
     UIView *view = [[UIView alloc]initWithFrame:frame];
     
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[[data objectAtIndex:index] objectAtIndex:0]]];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:[[data objectAtIndex:index] objectForKey:@"picUrl"]]];
     [view addSubview:imageView];
     
     
@@ -90,7 +87,7 @@
     label.textColor = [UIColor whiteColor];
     label.backgroundColor = [UIColor blackColor];
     label.alpha = 0.6;
-    label.text = [[data objectAtIndex:index] objectAtIndex:1];
+    label.text = [[data objectAtIndex:index] objectForKey:@"title"];
     [view addSubview:label];
     
     return view;
