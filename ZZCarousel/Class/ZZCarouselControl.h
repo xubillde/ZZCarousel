@@ -12,6 +12,7 @@
 
 @protocol ZZCarouselDataSource <NSObject>
 
+@required
 - (NSArray *) zzcarousel:(ZZCarouselControl *)carouselView;
 - (UIView *) zzcarousel:(ZZCarouselControl *)carouselView carouselFrame:(CGRect)frame data:(NSArray *)data viewForItemAtIndex:(NSInteger)index;
 
@@ -24,6 +25,7 @@
 /*
  *  此方法为 用于ZZCarousel 轮播的点击方法
  */
+@optional
 - (void)zzcarouselView:(ZZCarouselControl *)zzcarouselView didSelectItemAtIndex:(NSInteger)index;
 
 
